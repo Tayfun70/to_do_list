@@ -1,0 +1,128 @@
+.todo-container {
+  position: fixed; /* Sabit konumda kalmasını sağlar */
+  top: 10%; /* Sayfanın üstünden %10 aşağıya yerleşir */
+  left: 50%; /* Yatayda ortalamak için sayfanın ortasına alır */
+  transform: translateX(-50%); /* Yatayda tam ortalamak için kullanılır */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff; /* Kartın beyaz arka planı */
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+  padding: 20px; /* İçerik etrafında boşluk */
+  border-radius: 10px; /* Kartın köşelerini yuvarlar */
+  width: 50%; /* Kartın genişliği */
+  border: 2px solid #a71d2a; /* Kartın etrafında bir çerçeve */
+  z-index: 1000; /* Kartın ön planda olmasını sağlar */
+
+  ul {
+    max-height: 300px; /* Liste için maksimum yükseklik */
+    overflow-y: auto; /* Dikey kaydırma ekler */
+    width: 100%; /* Liste genişliği */
+    padding: 0;
+    margin: 0;
+    list-style: none; /* Varsayılan liste işaretlerini kaldırır */
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 10px 10px 0;
+    
+      padding: 10px;
+      background-color: #f9f9f9; /* Liste elemanlarının arka planı */
+      border-radius: 5px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  ul::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ul::-webkit-scrollbar-thumb {
+    background-color: #a71d2a;
+    border-radius: 10px;
+  }
+  
+  ul::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+}
+
+  
+  body {
+    background-color: #f9f9f9; /* Sayfanın geri kalanı için arka plan rengi */
+  }
+  
+  /* Başlık */
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  /* Input ve Ekle Butonu */
+  input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 10px;
+    //border: 2px solid #a71d2a;
+    margin-right: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  input{
+    border-color: #a71d2a;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+  
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+
+  
+  /* Checkbox */
+  input[type="checkbox"] {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  /* Sil Butonu */
+  button {
+    background-color: #dc3545;
+    &:hover {
+      background-color: #a71d2a;
+    }
+  }
+
+  div:first-child {
+    margin-bottom: 100px; /* İlk bloğun altına boşluk ekler */
+  }
+  
+  div:last-child {
+    display: flex;
+    justify-content: end; /* Ortalar */
+    align-items: center;
+    margin-top: 20px; /* Üstüne boşluk ekler */
+    gap: 10px; /* Butonlar ve metin arasında boşluk bırakır */
+  }
+  
+  
