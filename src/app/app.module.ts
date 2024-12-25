@@ -10,13 +10,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import {HttpClientModule} from '@angular/common/http';
 import {MaterialExampleModule} from '../material.module';
+import { NewListDialogComponent } from './components/new-list-dialog/new-list-dialog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoComponent,
-    ToDoListComponent
+    ToDoListComponent,
+    NewListDialogComponent
 
   ],
   imports: [

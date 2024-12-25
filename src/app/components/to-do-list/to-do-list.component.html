@@ -1,7 +1,12 @@
+<button mat-raised-button color="primary" (click)="openDialog()">Yeni Liste</button>
 
-<button mat-raised-button color="accent">New List</button>
 
-<div> 
-    <mat-card>Simple card</mat-card>
-</div>
+<mat-grid-list cols="5" rowHeight="200px" gutterSize="16px" style="margin-top: 10px">
+  <mat-grid-tile *ngFor="let todo of toDoList">
+    <mat-card >
+      <mat-card-title>{{ todo.name }}</mat-card-title>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
 
