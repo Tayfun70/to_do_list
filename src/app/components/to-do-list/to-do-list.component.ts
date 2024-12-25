@@ -20,8 +20,6 @@ export class ToDoListComponent  {
     this.loadTodos();
     console.log(this.toDoList);
   }
-
-
   loadTodos():void{
     debugger
     this.toDoList=this.listService.getToDoList();
