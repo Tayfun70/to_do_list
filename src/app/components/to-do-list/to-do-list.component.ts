@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import{ToDoListService,ToDoList} from '../../service/to-do-list.service'
 import { MatDialog } from '@angular/material/dialog';
 import {NewListDialogComponent} from '../new-list-dialog/new-list-dialog.component'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,8 +12,9 @@ import {NewListDialogComponent} from '../new-list-dialog/new-list-dialog.compone
 })
 export class ToDoListComponent  {
    toDoList:ToDoList[]=[];
+  
 
-  constructor(private dialog: MatDialog, private listService: ToDoListService) {
+  constructor(private dialog: MatDialog, private listService: ToDoListService,private router: Router) {
     this.loadTodos;
   }
 
@@ -20,11 +22,17 @@ export class ToDoListComponent  {
     this.loadTodos();
     console.log(this.toDoList);
   }
+
+  onCardClick(): void {
+    console.log('MatCard tıklandı!')
+    this.router.navigate(['/add-to-do']);
+  }
   loadTodos():void{
-    debugger
     this.toDoList=this.listService.getToDoList();
     console.log(this.toDoList);
   }
+
+ 
 
   openDialog() {
     const dialogRef = this.dialog.open(NewListDialogComponent, {

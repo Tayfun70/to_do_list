@@ -11,6 +11,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {HttpClientModule} from '@angular/common/http';
 import {MaterialExampleModule} from '../material.module';
 import { NewListDialogComponent } from './components/new-list-dialog/new-list-dialog.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -29,6 +30,8 @@ import { NewListDialogComponent } from './components/new-list-dialog/new-list-di
     MatNativeDateModule,
     ReactiveFormsModule,
     MaterialExampleModule,
+    AppRoutingModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo, TodoService } from '../../service/todo.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-todo',
@@ -10,7 +11,7 @@ export class TodoComponent {
   todos: Todo[] = [];
   newTodoTitle: string = '';
 
-  constructor(private todoService:TodoService) { 
+  constructor(private todoService:TodoService,private location:Location) { 
     this.loadTodos();
   }
 
@@ -19,16 +20,17 @@ export class TodoComponent {
   }
 
   addTodo(): void {
-    debugger
     if (this.newTodoTitle.trim()) {
       this.todoService.addTodo(this.newTodoTitle);
       this.newTodoTitle = '';
       this.loadTodos();
     }
   }
+  goBack(): void {
+    this.location.back(); // Tarayıcı geçmişine göre geri gider
+  }
 
   toggleTodo(id: number): void {
-    debugger
     this.todoService.toggleTodo(id);
     this.loadTodos();
   }
