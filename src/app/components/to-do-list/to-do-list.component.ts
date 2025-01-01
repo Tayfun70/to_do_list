@@ -23,16 +23,15 @@ export class ToDoListComponent  {
     console.log(this.toDoList);
   }
 
-  onCardClick(): void {
+  onCardClick(id:number): void {
     console.log('MatCard tıklandı!')
-    this.router.navigate(['/add-to-do']);
+    this.router.navigate(['/add-to-do'], { queryParams: { id: id } });
   }
+
   loadTodos():void{
     this.toDoList=this.listService.getToDoList();
     console.log(this.toDoList);
   }
-
- 
 
   openDialog() {
     const dialogRef = this.dialog.open(NewListDialogComponent, {
