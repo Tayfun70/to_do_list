@@ -1,4 +1,4 @@
-<div> <button mat-raised-button color="primary" (click)="goBack()">
+<div> <button mat-raised-button color="primary" style=" background-color: gray;" (click)="goBack()">
   <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_back"></mat-icon>
   Geri</button> </div>
 <div class="todo-container">
@@ -9,7 +9,7 @@
       <li *ngFor="let todo of todos">
         <input #input type="checkbox" [checked]="todo.completed" (change)="toggleTodo(todo.id)" />
         {{ todo.title }}
-        <button (click)="deleteTodo(todo.id)">Sil</button>
+        <button (click)="deleteTodo(todo.id)" style=" background-color: #a71d2a;">Sil</button>
       </li>
     </ul>
   </div>

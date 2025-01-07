@@ -1,29 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo, TodoService } from '../../service/todo.service';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent {
+export class TodoComponent implements OnInit {
   todos: Todo[] = [];
   newTodoTitle: string = '';
+  toDoListId!: number;
 
-  constructor(private todoService:TodoService,private location:Location) { 
+  constructor(private todoService:TodoService,private location:Location,private route: ActivatedRoute) { 
     this.loadTodos();
+  }
+
+  ngOnInit():void{
+    this.route.queryParams.subscribe(params=>{
+      this.toDoListId=params['id'];
+      console.log("Gelen id:",this.toDoListId);
+    })
+    this.getByToDoListId(this.toDoListId);
   }
 
   loadTodos():void{
     this.todos=this.todoService.getTodos();
   }
 
+  getByToDoListId(toDoListId:number):void{
+   this.todos= this.todoService.getByToDoListId(toDoListId);
+
+  }
+
   addTodo(): void {
     if (this.newTodoTitle.trim()) {
-      this.todoService.addTodo(this.newTodoTitle);
+      this.todoService.addTodo(this.toDoListId,this.newTodoTitle);
       this.newTodoTitle = '';
-      this.loadTodos();
+      this.getByToDoListId(this.toDoListId);
     }
   }
   goBack(): void {
@@ -32,15 +47,12 @@ export class TodoComponent {
 
   toggleTodo(id: number): void {
     this.todoService.toggleTodo(id);
-    this.loadTodos();
+    this.getByToDoListId(this.toDoListId);
   }
 
   deleteTodo(id: number): void {
     this.todoService.deleteTodo(id);
-    this.loadTodos();
-  }
-
-  ngOnInit(): void {
+    this.getByToDoListId(this.toDoListId);
   }
 
   currentPage: number = 1;

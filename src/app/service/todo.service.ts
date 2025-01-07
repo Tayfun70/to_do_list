@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 export interface Todo{
   id:number,
   title:string,
-  completed:boolean
+  completed:boolean,
+  toDoListId:any
 }
 
 @Injectable({
@@ -19,7 +20,11 @@ export class TodoService {
     return this.todos;
   }
 
-  addTodo(title:string):void{
+  getByToDoListId(toDoListId:number):Todo[]{
+    return this.todos.filter(t=> t.toDoListId===toDoListId);
+  }
+
+  addTodo(toDoListId:number,title:string):void{
     debugger
     if(this.todos.length!==0){
       this.nextId=this.todos[this.todos.length - 1].id;
@@ -28,7 +33,8 @@ export class TodoService {
     const newTodo:Todo={
       id:this.nextId,
       title:title,
-      completed:false
+      completed:false,
+      toDoListId:toDoListId
     }
     this.todos.push(newTodo);
   }
