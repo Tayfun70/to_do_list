@@ -3,5 +3,31 @@
 }
 
 .mat-grid-tile{
-    background-color: gray;
+  background-color: #aaaaff;
+  border-radius: 10px;
+ 
 }
+
+.mat-grid-tile:hover {
+    cursor: pointer; /* İmleç el şeklinde olur */
+    background-color: #8888ff; /* Hover durumunda arka plan rengi değişir */
+    transform: scale(1.05); /* Hover sırasında hafif bir büyütme efekti ekler */
+    transition: all 0.3s ease; /* Hover sırasında geçiş efektine yumuşaklık ekler */
+  }
+
+  
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: gray;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+  
+    &:hover {
+      background-color: #aaaaff
+    }
+  }

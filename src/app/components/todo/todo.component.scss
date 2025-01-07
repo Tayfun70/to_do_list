@@ -13,7 +13,7 @@
   padding: 20px; /* İçerik etrafında boşluk */
   border-radius: 10px; /* Kartın köşelerini yuvarlar */
   width: 50%; /* Kartın genişliği */
-  border: 2px solid #a71d2a; /* Kartın etrafında bir çerçeve */
+  border: 2px solid black; /* Kartın etrafında bir çerçeve */
   z-index: 1000; /* Kartın ön planda olmasını sağlar */
 
   ul {
@@ -76,6 +76,8 @@
     //border: 2px solid #a71d2a;
     margin-right: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; 
+    border: 2px solid black
   }
 
   input{
@@ -85,7 +87,7 @@
   button {
     padding: 10px 20px;
     font-size: 1rem;
-    background-color: #007bff;
+    background-color: gray;
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -105,13 +107,7 @@
     cursor: pointer;
   }
   
-  /* Sil Butonu */
-  button {
-    background-color: #dc3545;
-    &:hover {
-      background-color: #a71d2a;
-    }
-  }
+
 
   div:first-child {
     margin-bottom: 100px; /* İlk bloğun altına boşluk ekler */

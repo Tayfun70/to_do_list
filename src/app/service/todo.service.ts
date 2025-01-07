@@ -13,7 +13,6 @@ export interface Todo{
 export class TodoService {
   private todos:Todo[]=[];
   private nextId:number=0;
-  private toDoListId:any=null;
 
   constructor() { }
 
