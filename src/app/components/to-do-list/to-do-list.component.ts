@@ -36,14 +36,10 @@ export class ToDoListComponent  {
   openDialog() {
     const dialogRef = this.dialog.open(NewListDialogComponent, {
       panelClass:'fullscreen-dialog',
-      width: '400px', // Dialog genişliği
+      width: '250px', // Dialog genişliği
       disableClose: true, // Arka plana tıklayınca kapanmasın
       autoFocus: true,    // İlk input’a otomatik odaklan
     });
-
-    dialogRef.afterOpened().subscribe((res)=>{
-      console.log("dialog opened");
-    })
   
     dialogRef.afterClosed().subscribe((result: string | undefined) => {
       if (result) {

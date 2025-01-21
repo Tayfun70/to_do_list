@@ -12,6 +12,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {MaterialExampleModule} from '../material.module';
 import { NewListDialogComponent } from './components/new-list-dialog/new-list-dialog.component';
 import { RouterModule } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     MaterialExampleModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
