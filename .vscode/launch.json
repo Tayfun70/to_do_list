@@ -3,6 +3,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "TodolistappApplication",
+      "request": "launch",
+      "mainClass": "com.todolist.todolistapp.TodolistappApplication",
+      "projectName": "todolistapp"
+    },
+    {
       "name": "ng serve",
       "type": "pwa-chrome",
       "request": "launch",
