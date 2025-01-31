@@ -14,6 +14,7 @@ import { NewListDialogComponent } from './components/new-list-dialog/new-list-di
 import { RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MatInputModule } from '@angular/material/input';
     AppComponent,
     TodoComponent,
     ToDoListComponent,
-    NewListDialogComponent
+    NewListDialogComponent,
+    LoginComponent
 
   ],
   imports: [
