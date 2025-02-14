@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LoginComponent } from './components/login/login.component';
+import { DenemeComponent } from './components/deneme/deneme.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { LoginComponent } from './components/login/login.component';
     TodoComponent,
     ToDoListComponent,
     NewListDialogComponent,
-    LoginComponent
+    LoginComponent,
+    DenemeComponent
 
   ],
   imports: [
