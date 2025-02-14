@@ -5,9 +5,10 @@ import { ToDoListComponent } from './components/to-do-list/to-do-list.component'
 import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  { path: '', component: ToDoListComponent },
+  { path: '', component: LoginComponent },
+  { path: 'to-do-list', component: ToDoListComponent },
   {path:'add-to-do',component:TodoComponent},
-  {path:'login',component:LoginComponent}
+  //{path:'login',component:LoginComponent}
 ];
 
 @NgModule({

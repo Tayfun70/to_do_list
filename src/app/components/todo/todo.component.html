@@ -1,15 +1,15 @@
-<div> <button mat-raised-button color="primary" style=" background-color: gray;" (click)="goBack()">
+<div> <button mat-raised-button color="primary" style="margin: 5px 0 0 5px;" (click)="goBack()">
   <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_back"></mat-icon>
   Geri</button> </div>
 <div class="todo-container">
-    <h1>Todo List</h1>
+    <h1>{{todoListName}}</h1>
     <input type="text" [(ngModel)]="newTodoTitle" placeholder="Yeni Todo ekle" />
-    <button (click)="addTodo()">Ekle</button>
+    <button (click)="addTodo()"  mat-raised-button color="primary">Ekle</button>
     <ul>
       <li *ngFor="let todo of todos">
         <input #input type="checkbox" [checked]="todo.completed" (change)="toggleTodo(todo.id)" />
         {{ todo.title }}
-        <button (click)="deleteTodo(todo.id)" style=" background-color: #a71d2a;">Sil</button>
+        <button (click)="deleteTodo(todo.id)"  mat-raised-button color="warn">Sil</button>
       </li>
     </ul>
   </div>

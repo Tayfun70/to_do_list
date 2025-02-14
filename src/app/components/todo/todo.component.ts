@@ -12,6 +12,7 @@ export class TodoComponent implements OnInit {
   todos: Todo[] = [];
   newTodoTitle: string = '';
   toDoListId!: number;
+  todoListName!:string;
 
   constructor(private todoService:TodoService,private location:Location,private route: ActivatedRoute) { 
     this.loadTodos();
@@ -20,6 +21,7 @@ export class TodoComponent implements OnInit {
   ngOnInit():void{
     this.route.queryParams.subscribe(params=>{
       this.toDoListId=params['id'];
+      this.todoListName=params['name'];
       console.log("Gelen id:",this.toDoListId);
     })
     this.getByToDoListId(this.toDoListId);

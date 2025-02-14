@@ -10,5 +10,7 @@ body{
   height: 100vh;
   margin: 0;
   background-color: #cccccc;
-  //font-size: 20px;
+  padding: 10px;
+  // paddingden dolayı taşma olmaması için border-box yaparak taşmayı engelliyoruz.
+  box-sizing: border-box;
 }
