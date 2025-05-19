@@ -1,8 +1,20 @@
 <div class="background-container">
   <div class="cards">
-    <mat-card>
-      <span>Bitti</span>
+    <mat-card *ngFor="let item of listTitleList">
+      <span>{{item?.name}}</span>
+      <div class="deneme">tayfun</div>
+      <form [formGroup]="taskForm" (ngSubmit)="addTask(item!.id)">
+        <input type="text" formControlName="taskName" placeholder="İş giriniz">
+        <button type="submit">İş Ekle</button>
+      </form>
     </mat-card>
-    <button class="addTodoButton" style=" cursor: pointer;"> <mat-icon>add</mat-icon>Başka Liste Ekleyin</button>
+    <mat-card *ngIf="showAddListTitleInput">
+      <form [formGroup]="listForm" (ngSubmit)="addToDoList()">
+        <input type="text" formControlName="listTitleName" placeholder="liste adı girin">
+        <button type="submit">Liste Ekle</button>
+      </form>
+    </mat-card>
+    <button *ngIf="!showAddListTitleInput" class="addTodoButton" style=" cursor: pointer;" (click)="changeshowAddListTitleInputStatus()">
+      <mat-icon>add</mat-icon>Başka Liste Ekleyin</button>
   </div>
 </div>
