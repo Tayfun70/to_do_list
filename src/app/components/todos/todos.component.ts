@@ -10,7 +10,7 @@ import { ToDoList, ToDoListService } from 'src/app/service/to-do-list.service';
 export class TodosComponent implements OnInit {
   listTitleList: ToDoList[] = [];
   showAddListTitleInput: boolean;
-  showAddTaskInput: boolean;
+  showAddTaskInput: boolean=false;
   listForm: FormGroup;
   taskForm: FormGroup;
   constructor(
