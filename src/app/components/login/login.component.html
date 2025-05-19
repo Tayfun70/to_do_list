@@ -17,7 +17,7 @@
       <mat-error *ngIf="loginForm.get('password')?.hasError('required')">şifre zorunlu</mat-error>
     </mat-form-field>
     <div class="example-button-row" style="width: 100%; height:50px;">
-      <button color="primary" mat-raised-button style="width: 100%; height: 100%; ">Sign In</button>
+      <button color="primary" mat-raised-button style="width: 100%; height: 100%; " (click)="goList()">Sign In</button>
     </div>
   </form>
 </mat-card>
