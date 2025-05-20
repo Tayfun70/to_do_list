@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TaskService } from 'src/app/service/task.service';
 import { ToDoList, ToDoListService } from 'src/app/service/to-do-list.service';
 
 @Component({
@@ -10,11 +11,13 @@ import { ToDoList, ToDoListService } from 'src/app/service/to-do-list.service';
 export class TodosComponent implements OnInit {
   listTitleList: ToDoList[] = [];
   showAddListTitleInput: boolean;
-  showAddTaskInput: boolean=false;
+  showAddTaskInput: boolean = false;
+  tasks: Task[] = [];
   listForm: FormGroup;
   taskForm: FormGroup;
   constructor(
     private todoListService: ToDoListService,
+    private taskService: TaskService,
     private fb: FormBuilder
   ) {
     this.listForm = this.fb.group({
@@ -41,14 +44,14 @@ export class TodosComponent implements OnInit {
   getToDoList(): void {
     this.listTitleList = this.todoListService.getToDoList();
     console.log(this.listTitleList);
-    //todo: bu methotta kaldık
   }
 
   changeshowAddListTitleInputStatus(): void {
     this.showAddListTitleInput = true;
   }
 
-  addTask(listTitleId: number): void {
+  addTask(listTitleId: number,taskName:string): void {
     console.log(listTitleId);
+    this.tasks=this.taskService.addTask(listTitleId,taskName);
   }
 }
