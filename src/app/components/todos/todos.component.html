@@ -2,7 +2,7 @@
   <div class="cards">
     <mat-card *ngFor="let item of listTitleList">
       <span>{{item?.name}}</span>
-      <div *ngFor="let task of tasks" class="deneme">{{task?.title}}</div>
+      <div *ngFor="let task of item?.tasks" class="deneme">{{task?.title}}</div>
       <form [formGroup]="taskForm" (ngSubmit)="addTask(item!.id,taskForm.value.taskName)">
         <input type="text" formControlName="taskName" placeholder="İş giriniz">
         <button type="submit">İş Ekle</button>

@@ -62,7 +62,14 @@ export class TodosComponent implements OnInit {
   addTask(listTitleId: number, taskName: string): void {
     debugger;
     const newTasks = this.taskService.addTask(listTitleId, taskName);
-    this.tasks = newTasks;
+    if (newTasks.length > 0) {
+      const taskSize = newTasks.length;
+      this.listTitleList
+        .find((list) => list.id === listTitleId)
+        ?.tasks.push(newTasks[taskSize- 1]);
+      this.tasks = newTasks;
+    }
+
     this.taskForm.patchValue({
       taskName: '',
     });

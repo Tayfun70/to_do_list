@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Task } from './task.service';
 
 export interface ToDoList {
   id: number;
   name: string;
+  tasks: Task[];
 }
 
 @Injectable({
@@ -22,6 +24,7 @@ export class ToDoListService {
     const newToDoList: ToDoList = {
       id: this.nextId,
       name: name,
+      tasks:[]
     };
     this.toDoList.push(newToDoList);
   }
