@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { Task, TaskService } from 'src/app/service/task.service';
 import { ToDoList, ToDoListService } from 'src/app/service/to-do-list.service';
 
@@ -10,24 +16,27 @@ import { ToDoList, ToDoListService } from 'src/app/service/to-do-list.service';
 })
 export class TodosComponent implements OnInit {
   listTitleList: ToDoList[] = [];
-  showAddListTitleInput: boolean;
+  showAddListTitleInput: boolean = true; // todo: buraya tekrardan bak
   showAddTaskInput: boolean = false;
-  tasks: Task[]=[];
-  listForm: FormGroup;
-  taskForm: FormGroup;
+  tasks: Task[] = [];
+
+  listForm: UntypedFormGroup = this.fb.group({});
+  taskForm: UntypedFormGroup = this.fb.group({});
   constructor(
     private todoListService: ToDoListService,
     private taskService: TaskService,
-    private fb: FormBuilder
-  ) {
+    private fb: UntypedFormBuilder
+  ) {}
+
+  ngOnInit(): void {
     this.listForm = this.fb.group({
       listTitleName: ['', Validators.required],
     });
-    this.taskForm = this.fb.group({});
-    this.showAddListTitleInput = false;
-  }
 
-  ngOnInit(): void {
+    this.taskForm = this.fb.group({
+      taskName: [''],
+    });
+    this.showAddListTitleInput = false;
     this.getToDoList();
   }
 
@@ -50,8 +59,12 @@ export class TodosComponent implements OnInit {
     this.showAddListTitleInput = true;
   }
 
-addTask(listTitleId: number, taskName: string): void {
-  const newTasks = this.taskService.addTask(listTitleId, taskName);
-  this.tasks = newTasks;
-}
+  addTask(listTitleId: number, taskName: string): void {
+    debugger;
+    const newTasks = this.taskService.addTask(listTitleId, taskName);
+    this.tasks = newTasks;
+    this.taskForm.patchValue({
+      taskName: '',
+    });
+  }
 }
