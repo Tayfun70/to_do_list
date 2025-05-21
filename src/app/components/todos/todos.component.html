@@ -3,10 +3,12 @@
     <mat-card *ngFor="let item of listTitleList">
       <span>{{item?.name}}</span>
       <div *ngFor="let task of item?.tasks" class="deneme">{{task?.title}}</div>
-      <form [formGroup]="taskForm" (ngSubmit)="addTask(item!.id,taskForm.value.taskName)">
-        <input type="text" formControlName="taskName" placeholder="İş giriniz">
-        <button type="submit">İş Ekle</button>
-      </form>
+      <div class="task-form">
+        <form [formGroup]="taskForm" (ngSubmit)="addTask(item!.id,taskForm.value.taskName)">
+          <input type="text" formControlName="taskName" placeholder="İş giriniz">
+          <button type="submit">İş Ekle</button>
+        </form>
+      </div>
     </mat-card>
     <mat-card *ngIf="showAddListTitleInput">
       <form [formGroup]="listForm" (ngSubmit)="addToDoList()">
