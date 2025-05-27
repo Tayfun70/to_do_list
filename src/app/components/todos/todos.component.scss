@@ -22,36 +22,62 @@
     width: 10%;
     background-color: #f1f2f4;
     border-radius: 8px;
-    .todos {
-      min-width: 50px;
-      width: fit-content;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      .deneme {
-        background-color: #ffffff;
-        min-width: 10px;
-        width: 100%;
-        border-radius: 8px;
-        min-height: 36px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-      }
-    }
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 
+    .task {
+      background-color: #ffffff !important;
+      min-width: 10px;
+      width: 100%;
+      border-radius: 8px;
+      min-height: 36px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      .task-information {
+        width: 80%;
+        min-width: 7px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 0.5rem;
+        ::ng-deep .mat-checkbox .mat-checkbox-frame {
+          border-radius: 50%;
+        }
+
+        ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+          border-radius: 50%; /* İşaretli olduğunda da yuvarlak */
+          background-color: #38a97a;
+        }
+      }
+   
+    }
+   .strikethrough {
+        text-decoration: line-through;
+        background-color: #D8D8D8;
+      }
+
+      
     .task-form {
       form {
         display: flex;
         flex-direction: column;
+        gap: 0.5rem;
         button {
           border: none;
           cursor: pointer;
         }
         button:hover {
-          background-color: #D0D4DB;
-           border-radius: 8px;
+          background-color: #d0d4db;
+          border-radius: 8px;
+        }
+        input {
+          border: none;
+          min-height: 50px;
+          border-radius: 8px;
+          outline: none;
         }
       }
     }

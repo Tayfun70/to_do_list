@@ -5,6 +5,7 @@ export interface Task {
   title: string;
   completed: boolean;
   listTitleId: number;
+  isCompleted:boolean;
 }
 
 @Injectable({
@@ -23,10 +24,11 @@ export class TaskService {
     this.taskId++;
 
     const newTask: Task = {
-      id: 1,
+      id: this.taskId,
       title: title,
       completed: false,
       listTitleId: listTitleId,
+      isCompleted:false
     };
     this.tasks.push(newTask);
     return this.tasks;

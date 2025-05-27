@@ -6,6 +6,7 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
+import { MatCheckbox, MatCheckboxChange } from '@angular/material/checkbox';
 import { Task, TaskService } from 'src/app/service/task.service';
 import { ToDoList, ToDoListService } from 'src/app/service/to-do-list.service';
 
@@ -18,7 +19,8 @@ export class TodosComponent implements OnInit {
   listTitleList: ToDoList[] = [];
   showAddListTitleInput: boolean = true; // todo: buraya tekrardan bak
   showAddTaskInput: boolean = false;
-  tasks: Task[] = [];
+  checked: boolean = false;
+
 
   listForm: UntypedFormGroup = this.fb.group({});
   taskForm: UntypedFormGroup = this.fb.group({});
@@ -44,7 +46,9 @@ export class TodosComponent implements OnInit {
     console.log('Girilen liste adı:', this.listForm.value.listTitleName);
     const titleName: string = this.listForm.value.listTitleName;
     this.showAddListTitleInput = false;
-    this.todoListService.addTodoList(titleName);
+    if (this.listForm.dirty) {
+      this.todoListService.addTodoList(titleName);
+    }
     this.listForm.patchValue({
       listTitleName: '',
     });
@@ -60,18 +64,38 @@ export class TodosComponent implements OnInit {
   }
 
   addTask(listTitleId: number, taskName: string): void {
-    debugger;
-    const newTasks = this.taskService.addTask(listTitleId, taskName);
+    debugger
+    var newTasks: Task[] = [];
+    if (taskName) {
+      newTasks = this.taskService.addTask(listTitleId, taskName);
+    }
+
     if (newTasks.length > 0) {
       const taskSize = newTasks.length;
       this.listTitleList
         .find((list) => list.id === listTitleId)
-        ?.tasks.push(newTasks[taskSize- 1]);
-      this.tasks = newTasks;
+        ?.tasks.push(newTasks[taskSize - 1]);
     }
 
     this.taskForm.patchValue({
       taskName: '',
     });
+  }
+
+  clickCheckBox(
+    listId: number,
+    taskId: number,
+    event: MatCheckboxChange
+  ): void {
+    debugger
+    this.checked = event.checked;
+    var task = this.listTitleList
+      .find((list) => list.id == listId)
+      ?.tasks.find((task) => task.id == taskId);
+    if (task) {
+      task.completed = event.checked;
+    }
+
+
   }
 }
