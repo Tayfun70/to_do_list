@@ -2,17 +2,25 @@
   <div class="cards">
     <mat-card *ngFor="let item of listTitleList">
       <span>{{item?.name}}</span>
-      <div *ngFor="let task of item?.tasks" class="task" [class.strikethrough]="checked">
+      <div *ngFor="let task of item?.tasks" class="task">
         <div class="task-information">
           <mat-checkbox [checked]="task.completed" class="example-margin"
             (change)="clickCheckBox(item.id,task.id,$event)">
           </mat-checkbox>
-          <p> {{task?.title}}</p>
+          <p class="deneme"> {{task?.title}}</p>
         </div>
       </div>
       <div class="task-form">
         <form [formGroup]="taskForm" (ngSubmit)="addTask(item!.id,taskForm.value.taskName)">
-          <input type="text" formControlName="taskName" placeholder="İş giriniz">
+          <input type="text" formControlName="taskName"
+            placeholder="İş giriniz"><span>{{taskForm.get('taskName')?.value?.length}}/{{taskNameLength}}</span>
+          <p *ngIf="(taskForm.get('taskName')?.hasError('maxlength')) && submitted">
+            {{taskNameLength}} karakterden fazla olamaz
+          </p>
+
+          <p *ngIf="(taskForm.get('taskName')?.hasError('required')) && submitted">
+            İş ismi zorunludur!
+          </p>
           <button type="submit">İş Ekle</button>
         </form>
       </div>

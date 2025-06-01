@@ -51,15 +51,32 @@
           border-radius: 50%; /* İşaretli olduğunda da yuvarlak */
           background-color: #38a97a;
         }
+
+        .deneme {
+  
+          width: 4px;
+          transition: font-size 0.3s ease;
+        }
+
+        @media (max-width: 500px) {
+          .deneme {
+            font-size: 3px;
+          }
+        }
+
+        /* Ekran 400px'den küçükse tamamen gizle */
+        @media (max-width: 400px) {
+          .deneme {
+            display: none;
+          }
+        }
       }
-   
     }
-   .strikethrough {
+    /* .strikethrough {
         text-decoration: line-through;
         background-color: #D8D8D8;
-      }
+      }*/
 
-      
     .task-form {
       form {
         display: flex;
@@ -78,6 +95,9 @@
           min-height: 50px;
           border-radius: 8px;
           outline: none;
+        }
+        p {
+          color: red;
         }
       }
     }

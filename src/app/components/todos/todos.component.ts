@@ -20,7 +20,8 @@ export class TodosComponent implements OnInit {
   showAddListTitleInput: boolean = true; // todo: buraya tekrardan bak
   showAddTaskInput: boolean = false;
   checked: boolean = false;
-
+  submitted: boolean = false;
+  taskNameLength: number = 50;
 
   listForm: UntypedFormGroup = this.fb.group({});
   taskForm: UntypedFormGroup = this.fb.group({});
@@ -36,7 +37,7 @@ export class TodosComponent implements OnInit {
     });
 
     this.taskForm = this.fb.group({
-      taskName: [''],
+      taskName: ['', [Validators.required, Validators.maxLength(this.taskNameLength)]],
     });
     this.showAddListTitleInput = false;
     this.getToDoList();
@@ -64,22 +65,26 @@ export class TodosComponent implements OnInit {
   }
 
   addTask(listTitleId: number, taskName: string): void {
-    debugger
+    debugger;
     var newTasks: Task[] = [];
-    if (taskName) {
-      newTasks = this.taskService.addTask(listTitleId, taskName);
-    }
+    this.submitted = true;
+    if (this.taskForm.valid) {
+      if (taskName) {
+        this.submitted = false;
+        newTasks = this.taskService.addTask(listTitleId, taskName);
+      }
 
-    if (newTasks.length > 0) {
-      const taskSize = newTasks.length;
-      this.listTitleList
-        .find((list) => list.id === listTitleId)
-        ?.tasks.push(newTasks[taskSize - 1]);
-    }
+      if (newTasks.length > 0) {
+        const taskSize = newTasks.length;
+        this.listTitleList
+          .find((list) => list.id === listTitleId)
+          ?.tasks.push(newTasks[taskSize - 1]);
+      }
 
-    this.taskForm.patchValue({
-      taskName: '',
-    });
+      this.taskForm.patchValue({
+        taskName: '',
+      });
+    }
   }
 
   clickCheckBox(
@@ -87,7 +92,7 @@ export class TodosComponent implements OnInit {
     taskId: number,
     event: MatCheckboxChange
   ): void {
-    debugger
+    debugger;
     this.checked = event.checked;
     var task = this.listTitleList
       .find((list) => list.id == listId)
@@ -95,7 +100,5 @@ export class TodosComponent implements OnInit {
     if (task) {
       task.completed = event.checked;
     }
-
-
   }
 }
