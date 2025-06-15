@@ -1,13 +1,17 @@
 .background-container {
   width: 100%;
-  height: 100vh; /* Yüksekliği sayfa boyutuna göre ayarlar */
+  height: 100vh;
+  /* Yüksekliği sayfa boyutuna göre ayarlar */
   background-image: url("../../../assets/image/pexels-quang-nguyen-vinh-222549-2166711.jpg");
-  background-size: cover; /* Resmi ekranın tamamına sığdırır */
-  background-position: center; /* Resmi ortalar */
+  background-size: cover;
+  /* Resmi ekranın tamamına sığdırır */
+  background-position: center;
+  /* Resmi ortalar */
   background-attachment: fixed;
   padding: 1rem;
   box-sizing: border-box;
 }
+
 .cards {
   width: 100%;
   height: 90vh;
@@ -22,25 +26,96 @@
     width: 10%;
     background-color: #f1f2f4;
     border-radius: 8px;
-    .todos {
-      min-width: 50px;
-      width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 86%;
+    overflow-y: auto;
+
+    .task {
+      background-color: #ffffff !important;
+      min-width: 10px;
       width: 100%;
+      border-radius: 8px;
+      min-height: 3rem;
       display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      .deneme {
-        background-color: #ffffff;
-        min-width: 10px;
-        width: 100%;
-        border-radius: 8px;
-        min-height: 36px;
+      justify-content: space-around;
+      align-items: center;
+
+      .task-information {
+        width: 80%;
+        min-width: 7px;
         display: flex;
-        justify-content: space-around;
+        justify-content: start;
         align-items: center;
+        gap: 0.5rem;
+
+        ::ng-deep .mat-checkbox .mat-checkbox-frame {
+          border-radius: 50%;
+        }
+
+        ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+          border-radius: 50%;
+          /* İşaretli olduğunda da yuvarlak */
+          background-color: #38a97a;
+        }
+
+        .deneme {
+
+          width: 4px;
+          transition: font-size 0.3s ease;
+        }
+
+        @media (max-width: 500px) {
+          .deneme {
+            font-size: 3px;
+          }
+        }
+
+        /* Ekran 400px'den küçükse tamamen gizle */
+        @media (max-width: 400px) {
+          .deneme {
+            display: none;
+          }
+        }
+      }
+    }
+
+    /* .strikethrough {
+        text-decoration: line-through;
+        background-color: #D8D8D8;
+      }*/
+
+    .task-form {
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        button {
+          border: none;
+          cursor: pointer;
+        }
+
+        button:hover {
+          background-color: #d0d4db;
+          border-radius: 8px;
+        }
+
+        input {
+          border: none;
+          min-height: 50px;
+          border-radius: 8px;
+          outline: none;
+        }
+
+        p {
+          color: red;
+        }
       }
     }
   }
+
   .addTodoButton {
     min-width: 50px;
     width: 10%;
@@ -50,8 +125,10 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    border: 1px solid transparent; /* İnce saydam border */
-    background: transparent; /* Arka plan şeffaf */
+    border: 1px solid transparent;
+    /* İnce saydam border */
+    background: transparent;
+    /* Arka plan şeffaf */
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
       0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   }

@@ -2,19 +2,39 @@
   <div class="cards">
     <mat-card *ngFor="let item of listTitleList">
       <span>{{item?.name}}</span>
-      <div class="deneme">tayfun</div>
-      <form [formGroup]="taskForm" (ngSubmit)="addTask(item!.id)">
-        <input type="text" formControlName="taskName" placeholder="İş giriniz">
-        <button type="submit">İş Ekle</button>
-      </form>
+      <div *ngFor="let task of item?.tasks" class="task">
+        <div class="task-information">
+          <mat-checkbox [checked]="task.completed" class="example-margin"
+            (change)="clickCheckBox(item.id,task.id,$event)">
+          </mat-checkbox>
+          <p class="deneme"> {{task?.title}}</p>
+        </div>
+      </div>
+      <div class="task-form">
+        <form [formGroup]="taskForm" (ngSubmit)="addTask(item!.id,taskForm.value.taskName)">
+          <input type="text" formControlName="taskName"
+            placeholder="İş giriniz"><span>{{taskForm.get('taskName')?.value?.length}}/{{taskNameLength}}</span>
+          <p *ngIf="(taskForm.get('taskName')?.hasError('maxlength')) && submitted">
+            {{taskNameLength}} karakterden fazla olamaz
+          </p>
+
+          <p *ngIf="(taskForm.get('taskName')?.hasError('required')) && submitted">
+            İş ismi zorunludur!
+          </p>
+          <button type="submit">İş Ekle</button>
+        </form>
+      </div>
     </mat-card>
     <mat-card *ngIf="showAddListTitleInput">
-      <form [formGroup]="listForm" (ngSubmit)="addToDoList()">
-        <input type="text" formControlName="listTitleName" placeholder="liste adı girin">
-        <button type="submit">Liste Ekle</button>
-      </form>
+      <div class="task-form">
+        <form [formGroup]="listForm" (ngSubmit)="addToDoList()">
+          <input type="text" formControlName="listTitleName" placeholder="liste adı girin">
+          <button type="submit">Liste Ekle</button>
+        </form>
+      </div>
     </mat-card>
-    <button *ngIf="!showAddListTitleInput" class="addTodoButton" style=" cursor: pointer;" (click)="changeshowAddListTitleInputStatus()">
+    <button *ngIf="!showAddListTitleInput" class="addTodoButton" style=" cursor: pointer;"
+      (click)="changeshowAddListTitleInputStatus()">
       <mat-icon>add</mat-icon>Başka Liste Ekleyin</button>
   </div>
 </div>
